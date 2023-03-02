@@ -1,41 +1,34 @@
-# Web Crawling using xPath
+# Crawling table using XPath to generate short railway station codes
 
-The main goal of this project is to extract data from websites by navigating through html elements using xpath. I have extracted job details and actor details from relevant websites, stored data in different csv file.
+This project aims at generating short railway station codes by using XPath.
 
-## Why xpath ?
-   XPath stands for XML Path Language. It uses simple "path like" syntax to identify and navigate nodes in an HTML document.
-
-## Requirements
-    lxml module
-    requests module
-    csv module
+## Requiremnts
+- lxml module
+- requests module
+- pymysql
 
 ## Following steps are included in the project:
 
-### Step 1:
+### Step 1
+Make a connection to railway database using pymysql
 
-    Use requests module to download html contents from the specified urls (eg:"https://internshala.com/internships/keywords-python/")
+### Step 2
+Make a request to url by using requests module and get the html response content.
 
-### Step 2:
+### Step 3
+Generate tree using html response content and crawl the table using xpath.
 
-    Fetch html tree elements using html.fromstring() method and store it in list.
+### Step 4
+Extract the railway station names in the given table by using XPath and store them in the two dimensional list.
 
-### Step 3:
+### Step 5
+Iterate through two dimensional list remove the vowels from the station names, if the first value of letter is vowel
+append the value to result list. Consonants in station names values are appended to result list.
 
-    Extract data containers by using xpath that makes use of individual html tree and store the elements of container in the list.
+### Step 6
+Iterate through the resulted list and based on length of the list, generate new list by appending the first element at 0 index and first letter of second element at index 1.
 
-### Step 4:
+### Step 7
+Iterate the new list and  generate the code for station name based on length of the list.
 
-    Individual data container is passed as parameter to the function and data is extracted for required fields using
-    xpath expression
-
-### Step 5:
-
-    Result is stored in csv file
-
-
-
-
-
-
-
+In this project we can learn on how to crawl the table and store the generated short codes in mysql database without duplicates
