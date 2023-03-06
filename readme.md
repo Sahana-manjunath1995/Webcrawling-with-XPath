@@ -7,7 +7,8 @@ The main goal of this project is to extract data from websites by navigating thr
    
 ## System design for web crawling
 
-![image](https://user-images.githubusercontent.com/115713117/223017250-466d60be-bca6-4690-9dcb-9d364ffbee00.png)
+![image](https://user-images.githubusercontent.com/115713117/223024103-db1959af-2bc2-4e99-a99b-b1c862df2248.png)
+
 
 ## Requirements
     lxml module
@@ -130,7 +131,7 @@ Refer jobs.py
               else:
                   data.append(duration[2])
 
-              stipend =              elmt.xpath('./div[@class="internship_meta"]/div/div[@class="internship_other_details_container"]/div[@class="other_detail_item_row"]/div/div/span[@class="stipend"]/text()')
+              stipend = elmt.xpath('./div[@class="internship_meta"]/div/div[@class="internship_other_details_container"]/div[@class="other_detail_item_row"]/div/div/span[@class="stipend"]/text()')              
               if len(stipend) == 0:
                   data.append('')
               else:
@@ -173,6 +174,7 @@ Refer actors.py
 
 Result is stored in csv file
 
+In the current project we can learn how to crawl different websites and save the crawled data in a csv file. You can find the complete code in jobs.py and actors.py
 
 
 
