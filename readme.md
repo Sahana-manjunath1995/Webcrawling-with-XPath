@@ -1,13 +1,14 @@
 # Webcrawling-with-XPath
 
-The main goal of this project is to extract data from websites by navigating through html elements using xpath. I have extracted job details and actor details from relevant websites, stored data in different csv file.
+The main goal of this project is to extract job and actor detail from websites by navigating through html elements with xpath. Crawled data is stored in two dimensional list. Then two-dimensional list was inserted into Mysql database.
 
 ## Why xpath ?
    XPath stands for XML Path Language. It uses simple "path like" syntax to identify and navigate nodes in an HTML document.
    
 ## System design for web crawling
 
-![image](https://user-images.githubusercontent.com/115713117/223024103-db1959af-2bc2-4e99-a99b-b1c862df2248.png)
+![image](https://user-images.githubusercontent.com/115713117/223172165-087c5a04-8ade-4b4a-8216-2a5e1dc370ef.png)
+
 
 
 ## Requirements
