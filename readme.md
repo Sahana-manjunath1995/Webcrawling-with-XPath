@@ -22,7 +22,7 @@ Use requests module to download html contents from the specified urls (eg:"https
 
 Refer jobs.py
 
-    ```
+```
        def generate_urls(url_template, page_num, key_word):
 
           url_list = [url_template.format(key_word, i) for i in range(1, page_num+1)]
@@ -31,8 +31,8 @@ Refer jobs.py
        keyword = "marketing"
        url_temp = "https://internshala.com/internships/keywords-{}/page-{}/"
        urls = generate_urls(url_temp, pages, keyword)
-    
-    ```
+```
+
 Refer actors.py
 
     ```
