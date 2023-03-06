@@ -2,6 +2,12 @@
 
 This project aims at generating short railway station codes by using XPath.
 
+## System design for web crawling
+```
+![image](https://user-images.githubusercontent.com/115713117/223016950-7a2df47c-e9e7-4d60-8d50-059dd800b4ee.png)
+
+```
+
 ## Requiremnts
 - lxml module
 - requests module
@@ -61,11 +67,60 @@ def extract_column_data(row):
 ### Step 5
 Iterate through two dimensional list remove the vowels from the station names, if the first value of letter is vowel
 append the value to result list. Consonants in station names values are appended to result list.
+```
+def remove_vowels(row_values):
+    ''' This function removes vowels from row_values and stores different consonants in list data type'''
+
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    cons_lis = []
+    for i in row_values:
+        ltr_lis = []
+        for stg in i:
+            if stg[0] in vowels:
+                ltr_lis.append(stg[0])
+            for cons in stg:
+                if cons not in vowels and cons not in ltr_lis:
+                    ltr_lis.append(cons)
+                    j = ''.join(ltr_lis)
+            cons_lis.append(j.split())
+    return cons_lis
+```
 
 ### Step 6
-Iterate through the resulted list and based on length of the list, generate new list by appending the first element at 0 index and first letter of second element at index 1.
+Iterate through the resulted consonant list and based on length of the list, generate new list by appending the first element at 0 index and first letter of second element at index 1. Iterate the new list and  generate the code for station name based on length of the list.
+```
+def generate_code(data_two):
+
+    ''' This function generates code for the station name and stores result in list data type'''
+
+    data_three = []
+    for str_spl in data_two:
+        if len(str_spl) == 1:
+            data_three.append([str_spl[0]])
+        if len(str_spl) > 1:
+            data_three.append([str_spl[0]+str_spl[1][0]])
+    data_four = []
+    for i in data_three:
+        for st in i:
+            if len(st) <= 4:
+                 data_four.append([st.upper()])
+
+            if len(st) > 4:
+                req = st[0] +  st[1] + st[2]+ st[-1]
+                data_four.append([req.upper()])
+    return(data_four)
+```
 
 ### Step 7
-Iterate the new list and  generate the code for station name based on length of the list.
+Zip the two lists with place names and shortcodes for railway_station using zip(), then insert them into the Mysql database
+```
+ res = list(zip(data_one, gen_code))
+ mysql_query='''\
+ Insert into railway_project (station_name, code) values (%s, %s)
+ '''
+cur.executemany(mysql_query, res)
+conn.commit()
+```
+```
 
 In this project we can learn on how to crawl the table and store the generated short codes in mysql database without duplicates
