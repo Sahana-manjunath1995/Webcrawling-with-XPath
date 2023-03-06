@@ -35,30 +35,30 @@ Refer jobs.py
 
 Refer actors.py
 
-    ```
+```
        def generate_urls(url_template, page_num):
           url_list = [url_template.format(i) for i in range(1, page_num+1)]
           return url_list
        pages = 3
        url = "https://www.imdb.com/list/ls058011111/?page=-{}/"
        urls = generate_urls(url, pages)
-    ```
+```
 
 ### Step 2:
 
 Fetch html tree elements using html.fromstring() method and store it in list.
 
 Refer jobs.py
-    ```
+```
        def fetch_html_content(url):
 
          resp = requests.get(url)
          tree = html.fromstring(resp.content)
        return tree
-   ```
+```
    
  Refer actors.py
-   ```
+```
       def fetch_html_content(urls):
 
        for url in urls:
@@ -67,14 +67,14 @@ Refer jobs.py
            if resp.status_code == 200:
                yield tree
    
-   ```
+```
 
 ### Step 3:
 
 Extract data containers by using xpath that makes use of individual html tree and store the elements of container in the list.
 
 Refer jobs.py
-    ```
+ ```
       def get_job_containers(html_tree, page_num):
 
        job_containers = []
@@ -84,23 +84,23 @@ Refer jobs.py
                job_containers.append([ele])
        return job_containers
 
-   ```
+```
    
  Refer actors.py
-   ```
+```
       def get_actor_container(html_tree):
 
        actor_container = html_tree.xpath('//div[@id="main"]/div/div/div[@class="lister-list"]/div')
        yield actor_container
 
-   ```
+```
 
 ### Step 4:
 
 Individual data container is passed as parameter to the function and data is extracted for required fields using xpath expression.
 
 Refer jobs.py
-    ```
+ ```
       def extract_data_container_path(div):
 
     for elmt in div :
@@ -146,10 +146,10 @@ Refer jobs.py
         data.append(view_det[0])
     return data
 
-   ```
+```
    
 Refer actors.py
-   ```
+```
      def extract_actor_data(row) :
 
     data = []
@@ -174,7 +174,7 @@ Refer actors.py
         result.append(final)
 
     return (result)
-   ```
+```
 
 ### Step 5:
 
