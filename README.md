@@ -1,6 +1,6 @@
 # Webcrawling-with-XPath
 
-This project aims at generating short railway station codes by using XPath.
+The main objective of this project is to crawl table data on Karnataka railroad stations website. The table data is obtained by navigating through each html element using XPath and stored in a two dimensional list. Later, the two-dimensional list was stored in a MySql database.
 
 ## System design for web crawling
 
@@ -10,9 +10,10 @@ This project aims at generating short railway station codes by using XPath.
 - lxml module
 - requests module
 - pymysql
+- docker
 
 
-1. Make a connection to railway database using pymysql
+1. Make a connection to railway database present in docker container using pymysql
 
 2. Make a request to url by using requests module and get the html response content.
 
@@ -32,4 +33,4 @@ python3 railway_code.py
 ```
 
 In this project we can learn how to crawl the table and store the generated short codes in the mysql database without duplicates.
-For more code refer to railway_code.py.
+For complete code refer to railway_code.py.
