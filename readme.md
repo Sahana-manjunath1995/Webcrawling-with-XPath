@@ -15,6 +15,8 @@ The main goal of this project is to extract job and actor detail from websites b
     lxml module
     requests module
     csv module
+    
+## Following steps are used:
 
 1. Use requests module to download html contents from the specified urls (eg:"https://internshala.com/internships/keywords-python/").
 
