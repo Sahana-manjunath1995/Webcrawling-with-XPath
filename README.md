@@ -4,7 +4,7 @@ This project aims at generating short railway station codes by using XPath.
 
 ## System design for web crawling
 
-![image](https://user-images.githubusercontent.com/115713117/223016950-7a2df47c-e9e7-4d60-8d50-059dd800b4ee.png)
+![image](https://user-images.githubusercontent.com/115713117/223017250-466d60be-bca6-4690-9dcb-9d364ffbee00.png)
 
 
 ## Requiremnts
