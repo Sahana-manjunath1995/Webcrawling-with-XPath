@@ -122,4 +122,5 @@ conn.commit()
 ```
 ```
 
-In this project we can learn on how to crawl the table and store the generated short codes in mysql database without duplicates
+In this project we can learn how to crawl the table and store the generated short codes in the mysql database without duplicates.
+For more code refer to railway_code.py.
