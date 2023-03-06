@@ -31,9 +31,27 @@ def extract_column_data(row):
     return(row_values)
 
 
+def remove_vowels(row_values):
+    ''' This function removes vowels from row_values and stores different consonants in list data type'''
+
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    cons_lis = []
+    for i in row_values:
+        ltr_lis = []
+        for stg in i:
+            if stg[0] in vowels:
+                ltr_lis.append(stg[0])
+            for cons in stg:
+                if cons not in vowels and cons not in ltr_lis:
+                    ltr_lis.append(cons)
+                    j = ''.join(ltr_lis)
+            cons_lis.append(j.split())
+    return cons_lis
+
+
 def generate_code(data_two):
 
-    ''' This function generates code for the station name and stores resu;lt in list data type'''
+    ''' This function generates code for the station name and stores result in list data type'''
 
     data_three = []
     for str_spl in data_two:
@@ -53,8 +71,6 @@ def generate_code(data_two):
     return(data_four)
 
 
-
-
 if __name__ == '__main__':
     url = "https://www.prokerala.com/travel/indian-railway/karnataka-stations/"
     resp = requests.get(url)
@@ -62,25 +78,9 @@ if __name__ == '__main__':
     table = tree.xpath("//table[@id='pageTable']")[0]
     rows = table.xpath('./tbody/tr')
     data_one = [extract_column_data(row) for row in rows]
-    print(data_one)
-    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
-    cons_lis = []
-    for i in data_one:
-        ltr_lis = []
-        for stg in i:
-            if stg[0] in vowels:
-                ltr_lis.append(stg[0])
-            for cons in stg:
-                if cons not in vowels and cons not in ltr_lis:
-                    ltr_lis.append(cons)
-                    j = ''.join(ltr_lis)
-            cons_lis.append(j.split())
-    data_two = cons_lis
+    data_two = remove_vowels(data_one)
     gen_code  =  generate_code(data_two)
-    print(gen_code)
     res = list(zip(data_one, gen_code))
-    print(len(res))
-
     mysql_query='''\
     Insert into railway_project (station_name, code) values (%s, %s)
     '''
