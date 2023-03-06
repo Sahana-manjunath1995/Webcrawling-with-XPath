@@ -11,7 +11,7 @@ This project aims at generating short railway station codes by using XPath.
 
 ### Step 1
 Make a connection to railway database using pymysql
-'''
+```
 conn = pymysql.connect(
         host='localhost',
         user='root',
@@ -19,7 +19,7 @@ conn = pymysql.connect(
         db='railway',
         )
 cur = conn.cursor()
-'''
+```
 
 ### Step 2
 Make a request to url by using requests module and get the html response content.
