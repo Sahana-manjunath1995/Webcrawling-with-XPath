@@ -18,8 +18,8 @@ The main goal of this project is to extract data from websites by navigating thr
 
 ### Step 1:
 
-    Use requests module to download html contents from the specified urls (eg:"https://internshala.com/internships/keywords-python/")
-    Refer jobs.py
+Use requests module to download html contents from the specified urls (eg:"https://internshala.com/internships/keywords-python/")
+Refer jobs.py
     ```
        def generate_urls(url_template, page_num, key_word):
 
@@ -31,7 +31,8 @@ The main goal of this project is to extract data from websites by navigating thr
        urls = generate_urls(url_temp, pages, keyword)
     
     ```
-    Refer actors.py
+Refer actors.py
+    ```
        def generate_urls(url_template, page_num):
           url_list = [url_template.format(i) for i in range(1, page_num+1)]
           return url_list
@@ -42,8 +43,8 @@ The main goal of this project is to extract data from websites by navigating thr
 
 ### Step 2:
 
-    Fetch html tree elements using html.fromstring() method and store it in list.
-     Refer jobs.py
+Fetch html tree elements using html.fromstring() method and store it in list.
+Refer jobs.py
     ```
        def fetch_html_content(url):
 
@@ -51,7 +52,7 @@ The main goal of this project is to extract data from websites by navigating thr
          tree = html.fromstring(resp.content)
        return tree
    ```
-    Refer actors.py
+ Refer actors.py
    ```
       def fetch_html_content(urls):
 
@@ -65,8 +66,8 @@ The main goal of this project is to extract data from websites by navigating thr
 
 ### Step 3:
 
-    Extract data containers by using xpath that makes use of individual html tree and store the elements of container in the list.
-     Refer jobs.py
+Extract data containers by using xpath that makes use of individual html tree and store the elements of container in the list.
+Refer jobs.py
     ```
       def get_job_containers(html_tree, page_num):
 
@@ -78,7 +79,7 @@ The main goal of this project is to extract data from websites by navigating thr
        return job_containers
 
    ```
-    Refer actors.py
+ Refer actors.py
    ```
       def get_actor_container(html_tree):
 
@@ -89,9 +90,8 @@ The main goal of this project is to extract data from websites by navigating thr
 
 ### Step 4:
 
-    Individual data container is passed as parameter to the function and data is extracted for required fields using
-    xpath expression
-     Refer jobs.py
+Individual data container is passed as parameter to the function and data is extracted for required fields using xpath expression.    
+Refer jobs.py
     ```
       def extract_data_container_path(div):
 
@@ -139,7 +139,7 @@ The main goal of this project is to extract data from websites by navigating thr
     return data
 
    ```
-    Refer actors.py
+Refer actors.py
    ```
      def extract_actor_data(row) :
 
@@ -169,7 +169,8 @@ The main goal of this project is to extract data from websites by navigating thr
 
 ### Step 5:
 
-    Result is stored in csv file
+Result is stored in csv file
+
 
 
 
