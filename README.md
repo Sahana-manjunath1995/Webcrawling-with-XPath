@@ -12,6 +12,7 @@ The main objective of this project is to crawl table data on Karnataka railroad 
 - pymysql
 - docker
 
+## Following steps are used:
 
 1. Make a connection to railway database present in docker container using pymysql
 
